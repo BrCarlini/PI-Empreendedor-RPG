@@ -14,6 +14,8 @@ public class App {
     }
 
 
+
+
     public static void menu(){
         Scanner entrada = new Scanner(System.in);
 
@@ -24,7 +26,7 @@ public class App {
         System.out.println("2.: Jogar ");
         System.out.println("3.: Créditos ");
         System.out.println("4.: Sair ");
-        System.out.println("Escolha uma opção: ");
+        System.out.print("Escolha uma opção: ");
         opcao = entrada.nextInt();
 
         switch (opcao) {
@@ -35,7 +37,7 @@ public class App {
 
 
             case 2:
-                System.out.println("Jogar");
+                jogar();
                 break;
 
             case 3:
@@ -110,6 +112,63 @@ public class App {
         }else {
             System.out.print("Saindo do programa");
         }
+
+    }
+
+
+
+    public static void jogar(){
+        Scanner entrada = new Scanner(System.in);
+        String respostaUsuario;
+        int pontos = 1;
+
+        String perguntas [] = {
+                "Capital do Brasil ?",
+                "Palmeiras tem mundial ?"
+        };
+
+        String respostas [] = {
+                "b",
+                "a"
+        };
+
+        String opcoes[] = {
+                        "a) São Paulo\n" +
+                        "b) Brasilia\n" +
+                        "c) Rio de Janeiro\n",
+
+                        "a) Não\n" +
+                        "b) Sim\n",
+
+        };
+
+
+        for(int i = 0; i < perguntas.length; i++){
+            System.out.println(perguntas[i]);
+            System.out.println(opcoes[i]);
+
+            System.out.print("Sua resposta: ");
+            respostaUsuario = entrada.next();
+
+            if(respostaUsuario.equalsIgnoreCase(respostas[i])){
+                System.out.println("Resposta correta!!!");
+                pontos++;
+                System.out.println("Pontuação atual: " + pontos);
+                System.out.println("=============== // ===============");
+            }else{
+                System.out.println("Resposta errada!!!");
+                //System.out.println("Resposta correta era: " + respostas[i]);
+                pontos--;
+            }
+
+            if(pontos <= 0 ){
+                System.out.println("GAME OVER");
+                break;
+            }
+        }
+
+
+
 
     }
 
