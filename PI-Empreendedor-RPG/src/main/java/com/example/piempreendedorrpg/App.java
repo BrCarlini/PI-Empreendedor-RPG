@@ -6,57 +6,53 @@ public class App {
 
     public static void main(String[] args) {
 
+        //String retornoDaFuncaoClassificacao = classificacao(10).getClass().getSimpleName();
+        //testa_classificacao(retornoDaFuncaoClassificacao);
 
         menu();
 
-
-
     }
-
-
 
 
     public static void menu(){
         Scanner entrada = new Scanner(System.in);
 
-        String opcao;
+        String opcao = "";
+
+        System.out.println("------ MENU DO JOGO ------");
+        System.out.println("1.: Instruções ");
+        System.out.println("2.: Jogar ");
+        System.out.println("3.: Créditos ");
+        System.out.println("4.: Sair ");
+        System.out.print("Escolha uma opção: ");
+        opcao = entrada.next();
 
 
-        while(true){
-
-            System.out.println("------ MENU DO JOGO ------");
-            System.out.println("1.: Instruções ");
-            System.out.println("2.: Jogar ");
-            System.out.println("3.: Créditos ");
-            System.out.println("4.: Sair ");
-            System.out.print("Escolha uma opção: ");
-            opcao = entrada.next();
 
 
-            switch (opcao) {
-                case "1":
-                    //System.out.println(" Instruções do JOGO ");
-                    instrucao();
-                    break;
+        switch (opcao) {
+            case "1":
+                //System.out.println(" Instruções do JOGO ");
+                instrucao();
+                break;
 
 
-                case "2":
-                    jogar();
-                    break;
+            case "2":
+                jogar();
+                break;
 
-                case "3":
-                    creditos();
-                    break;
+            case "3":
+                creditos();
+                break;
 
-                case "4":
-                    System.out.println(" Saindo ");
-                    break;
+            case "4":
+                System.out.println(" Saindo ");
+                break;
 
-                default:
-                    System.out.println("Opção Inválida! ");
-                    break;
+            default:
+                System.out.println("Opção Inválida! ");
+                break;
 
-            }
         }
     }
 
@@ -96,7 +92,6 @@ public class App {
         int opcao;
 
 
-
         System.out.println("------------ Créditos ------------");
         System.out.println("CENTRO UNIVERSITÁRIO SENAC\n" +
                 "Materia: Projeto Integrador I - Desenvolvimento de Lógica\n" +
@@ -119,7 +114,6 @@ public class App {
 
     public static void executaPerguntas(String[]perguntas, String[]respostas, String[]opcoes, int pontos){
 
-
         Scanner entrada = new Scanner(System.in);
         String respostaUsuario;
 
@@ -138,12 +132,9 @@ public class App {
             }
         }
 
-        classificacao(pontos);
-
+        System.out.println(classificacao(pontos));
 
     }
-
-
 
 
 
@@ -151,7 +142,6 @@ public class App {
         int pontos = 0;
         Scanner entrada = new Scanner(System.in);
         String admEscolhida;
-
 
         // Arrays para Opção Adm Classica
         String[] perguntasAdmClassica = {
@@ -232,7 +222,6 @@ public class App {
                         "d) Equidade (certa)"
 
         };
-
 
         // Arrays para Opção Adm Cientifica
         String[] perguntasAdmCientifica = {
@@ -325,7 +314,6 @@ public class App {
                 break;
             }else{
                 System.out.println("Opção inválida.");
-
             }
         }
 
@@ -333,70 +321,83 @@ public class App {
     }
 
 
-    public static void classificacao(int pontos){
+    public static String classificacao(int pontos){
         System.out.println("Total de pontos: " + pontos);
         if (pontos >= 9) {
-            System.out.println("Parabéns Campeão, você foi eleito o melhor empresário do ano pela Forbes.");
-            System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠋⠉⠈⠉⠉⠉⠉⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⡏⣀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿\n"
-                    +         " ⣿⣿⣿⢏⣴⣿⣷⠀⠀⠀⠀⠀⢾⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿\n"
-                    +         " ⣿⣿⣟⣾⣿⡟⠁⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣷⢢⠀⠀⠀⠀⠀⠀⠀⢸⣿\n"
-                    +         " ⣿⣿⣿⣿⣟⠀⡴⠄⠀⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⣿\n"
-                    +         " ⣿⣿⣿⠟⠻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠶⢴⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⣿\n"
-                    +         " ⣿⣁⡀⠀⠀⢰⢠⣦⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⡄⠀⣴⣶⣿⡄⣿\n"
-                    +         " ⣿⡋⠀⠀⠀⠎⢸⣿⡆⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⠗⢘⣿⣟⠛⠿⣼\n"
-                    +          "⣿⣿⠋⢀⡌⢰⣿⡿⢿⡀⠀⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⡇⠀⢸⣿⣿⣧⢀⣼\n"
-                    +         " ⣿⣿⣷⢻⠄⠘⠛⠋⠛⠃⠀⠀⠀⠀⠀⢿⣧⠈⠉⠙⠛⠋⠀⠀⠀⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣧⠀⠈⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⢀⢃⠀⠀⢸⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⡿⠀⠴⢗⣠⣤⣴⡶⠶⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡸⠀⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⡀⢠⣾⣿⠏⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠉⠀⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣧⠈⢹⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⡄⠈⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⣿⣦⣄⣀⣀⣀⣀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠙⣿⣿⡟⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠁⠀⠀⠹⣿⠃⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                    +         " ⣿⣿⣿⣿⠿⠛⠉⠉⠁⠀⢻⣿⡇⠀⠀⠀⠀⠀⠀⢀⠈⣿⣿⡿⠉⠛⠛⠛⠉⠉\n"
-                    +         " ⣿⡿⠋⠁⠀⠀⢀⣀⣠⡴⣸⣿⣇⡄⠀⠀⠀⠀⢀⡿⠄⠙⠛⠀⣀⣠⣤⣤⠄\n");
-        } else if (pontos >= 4) {
-            System.out.println("Muito bem, você recebeu o pato da felicidade, sua empresa não quebrou." );
-            System.out.println(
-                              "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                            + "⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣉⡥⠶⢶⣿⣿⣿⣿⣷⣆⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿\n"
-                            + " ⣿⣿⣿⣿⣿⣿⣿⡿⢡⡞⠁⠀⠀⠤⠈⠿⠿⠿⠿⣿⠀⢻⣦⡈⠻⣿⣿⣿⣿⣿\n"
-                            + "⣿⣿⣿⣿⣿⣿⣿⡇⠘⡁⠀⢀⣀⣀⣀⣈⣁⣐⡒⠢⢤⡈⠛⢿⡄⠻⣿⣿⣿⣿\n"
-                            + "⣿⣿⣿⣿⣿⣿⣿⡇⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠉⠐⠄⡈⢀⣿⣿⣿\n"
-                            + " ⣿⣿⣿⣿⣿⣿⣿⠇⢠⣿⣿⣿⣿⡿⢿⣿⣿⣿⠁⢈⣿⡄⠀⢀⣀⠸⣿⣿⣿⣿\n"
-                            + "⣿⣿⣿⣿⡿⠟⣡⣶⣶⣬⣭⣥⣴⠀⣾⣿⣿⣿⣶⣾⣿⣧⠀⣼⣿⣷⣌⡻⢿⣿\n"
-                            + " ⣿⣿⠟⣋⣴⣾⣿⣿⣿⣿⣿⣿⣿⡇⢿⣿⣿⣿⣿⣿⣿⡿⢸⣿⣿⣿⣿⣷⠄⢻\n"
-                            + "⡏⠰⢾⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⢂⣭⣿⣿⣿⣿⣿⠇⠘⠛⠛⢉⣉⣠⣴⣾\n"
-                            + "⣿⣷⣦⣬⣍⣉⣉⣛⣛⣉⠉⣤⣶⣾⣿⣿⣿⣿⣿⣿⡿⢰⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                            + "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡘⣿⣿⣿⣿⣿⣿⣿⣿⡇⣼⣿⣿⣿⣿⣿⣿⣿⣿\n"
-                            + "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⢸⣿⣿⣿⣿⣿⣿⣿⠁⣿⣿⣿⣿⣿⣿⣿⣿⣿");
-        } else {
-            System.out.println("Poww irmão...");
-            System.out.println("" +
-                    "⣿⣿⣿⣿⣿⣿⣿⡿⠛⠥⠖⠈⠩⠭⠭⠉⠉⠠⢤⣬⡙⢿⣿⣿⣿⣿⣿⣿⣿⣿\r\n"
-                    + "⣿⣿⣿⣿⣿⣿⣿⢁⣶⠶⢦⡄⢸⣾⣿⡆⠀⣤⣶⢶⣬⡀⢿⣿⣿⣿⣿⣿⣿⣿\r\n"
-                    + "⣿⣿⣿⣿⣿⣿⡏⠈⠷⠤⠼⢃⣨⣤⣤⣤⡈⠿⢅⣀⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿\r\n"
-                    + "⣿⣿⣿⣿⣿⣿⠇⣶⡶⢠⢾⣿⣿⣿⣿⣿⢻⡄⢰⣶⣶⣶⠘⣿⣿⣿⣿⣿⣿⣿\r\n"
-                    + "⣿⣿⣿⣿⣿⡏⢰⣿⠁⣿⣾⣿⣿⣿⣿⣿⣾⣿⡆⢹⣿⣿⡄⢿⣿⣿⣿⣿⣿⣿\r\n"
-                    + "⣿⣿⣿⣿⣿⡇⢸⡿⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠈⣿⣿⡿⠦⢬⣙⠻⣿⣿⣿\r\n"
-                    + "⣿⣿⣿⣿⣿⣷⡈⣧⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⡿⠁⠀⠀⠈⢷⡌⢿⣿\r\n"
-                    + "⣿⣿⣿⣿⣿⣿⣷⢸⣧⡙⠿⣿⣿⣿⣿⣿⣿⡿⠟⢠⣿⠇⠀⠀⠀⠀⢸⣿⠘⣿\r\n"
-                    + "⣿⣿⣿⣿⡿⠟⣋⣄⠻⣄⠀⢨⢙⡛⣩⢭⡤⡀⠀⣸⠏⣰⣆⡀⠀⠀⢸⣿⡆⣿\r\n"
-                    + "⣿⣿⠟⣉⣤⣾⣿⣿⣷⣌⠑⠶⣦⣤⣥⣴⣶⡾⠟⢁⣼⣿⣿⣿⣶⣄⡀⣿⣧⠹\r\n"
-                    + "⡿⢡⣾⣿⣿⡟⢛⠻⣿⣿⣷⣤⣄⠉⠉⠉⢁⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣌⠻⡆\r\n"
-                    + "⣱⣿⣿⣿⡿⢰⣿⣷⣌⡛⠿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄\r\n"
-                    + "⣿⣿⣿⡟⣰⣿⣿⣿⣿⣿⣷⣦⣤⣭⣉⣭⣭⣭⣤⣤⣶⣆⠻⠿⠿⣿⣿⣿⣿⣿\r\n"
-                    + "⣿⣿⠟⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⢸⣿⣿⣿⣿");
 
+            return """
+                    
+                    Parabéns Campeão, você foi eleito o melhor empresário do ano pela Forbes.
+                    ⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠋⠉⠈⠉⠉⠉⠉⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⡏⣀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿
+                     ⣿⣿⣿⢏⣴⣿⣷⠀⠀⠀⠀⠀⢾⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿
+                     ⣿⣿⣟⣾⣿⡟⠁⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣷⢢⠀⠀⠀⠀⠀⠀⠀⢸⣿
+                     ⣿⣿⣿⣿⣟⠀⡴⠄⠀⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⣿
+                     ⣿⣿⣿⠟⠻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠶⢴⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⣿
+                     ⣿⣁⡀⠀⠀⢰⢠⣦⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⡄⠀⣴⣶⣿⡄⣿
+                     ⣿⡋⠀⠀⠀⠎⢸⣿⡆⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⠗⢘⣿⣟⠛⠿⣼
+                    ⣿⣿⠋⢀⡌⢰⣿⡿⢿⡀⠀⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⡇⠀⢸⣿⣿⣧⢀⣼
+                     ⣿⣿⣷⢻⠄⠘⠛⠋⠛⠃⠀⠀⠀⠀⠀⢿⣧⠈⠉⠙⠛⠋⠀⠀⠀⣿⣿⣿⣿⣿
+                     ⣿⣿⣧⠀⠈⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⢀⢃⠀⠀⢸⣿⣿⣿⣿
+                     ⣿⣿⡿⠀⠴⢗⣠⣤⣴⡶⠶⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡸⠀⣿⣿⣿⣿
+                     ⣿⣿⣿⡀⢠⣾⣿⠏⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠉⠀⣿⣿⣿⣿
+                     ⣿⣿⣿⣧⠈⢹⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⡄⠈⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⣿⣦⣄⣀⣀⣀⣀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠙⣿⣿⡟⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠁⠀⠀⠹⣿⠃⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                     ⣿⣿⣿⣿⠿⠛⠉⠉⠁⠀⢻⣿⡇⠀⠀⠀⠀⠀⠀⢀⠈⣿⣿⡿⠉⠛⠛⠛⠉⠉
+                     ⣿⡿⠋⠁⠀⠀⢀⣀⣠⡴⣸⣿⣇⡄⠀⠀⠀⠀⢀⡿⠄⠙⠛⠀⣀⣠⣤⣤⠄
+                    """;
+        } else if (pontos >= 4) {
+            return """
+                    Muito bem, você recebeu o pato da felicidade, sua empresa não quebrou.
+                    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣉⡥⠶⢶⣿⣿⣿⣿⣷⣆⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿
+                    ⣿⣿⣿⣿⣿⣿⣿⡿⢡⡞⠁⠀⠀⠤⠈⠿⠿⠿⠿⣿⠀⢻⣦⡈⠻⣿⣿⣿⣿⣿
+                    ⣿⣿⣿⣿⣿⣿⣿⡇⠘⡁⠀⢀⣀⣀⣀⣈⣁⣐⡒⠢⢤⡈⠛⢿⡄⠻⣿⣿⣿⣿
+                    ⣿⣿⣿⣿⣿⣿⣿⡇⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠉⠐⠄⡈⢀⣿⣿⣿
+                    ⣿⣿⣿⣿⣿⣿⣿⠇⢠⣿⣿⣿⣿⡿⢿⣿⣿⣿⠁⢈⣿⡄⠀⢀⣀⠸⣿⣿⣿⣿
+                    ⣿⣿⣿⣿⡿⠟⣡⣶⣶⣬⣭⣥⣴⠀⣾⣿⣿⣿⣶⣾⣿⣧⠀⣼⣿⣷⣌⡻⢿⣿
+                    ⣿⣿⠟⣋⣴⣾⣿⣿⣿⣿⣿⣿⣿⡇⢿⣿⣿⣿⣿⣿⣿⡿⢸⣿⣿⣿⣿⣷⠄⢻
+                    ⡏⠰⢾⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⢂⣭⣿⣿⣿⣿⣿⠇⠘⠛⠛⢉⣉⣠⣴⣾
+                    ⣿⣷⣦⣬⣍⣉⣉⣛⣛⣉⠉⣤⣶⣾⣿⣿⣿⣿⣿⣿⡿⢰⣿⣿⣿⣿⣿⣿⣿⣿
+                    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡘⣿⣿⣿⣿⣿⣿⣿⣿⡇⣼⣿⣿⣿⣿⣿⣿⣿⣿
+                    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⢸⣿⣿⣿⣿⣿⣿⣿⠁⣿⣿⣿⣿⣿⣿⣿⣿⣿""";
+        } else {
+
+            return """
+                    Poww irmão...
+                    ⣿⣿⣿⣿⣿⣿⣿⡿⠛⠥⠖⠈⠩⠭⠭⠉⠉⠠⢤⣬⡙⢿⣿⣿⣿⣿⣿⣿⣿⣿\r
+                    ⣿⣿⣿⣿⣿⣿⣿⢁⣶⠶⢦⡄⢸⣾⣿⡆⠀⣤⣶⢶⣬⡀⢿⣿⣿⣿⣿⣿⣿⣿\r
+                    ⣿⣿⣿⣿⣿⣿⡏⠈⠷⠤⠼⢃⣨⣤⣤⣤⡈⠿⢅⣀⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿\r
+                    ⣿⣿⣿⣿⣿⣿⠇⣶⡶⢠⢾⣿⣿⣿⣿⣿⢻⡄⢰⣶⣶⣶⠘⣿⣿⣿⣿⣿⣿⣿\r
+                    ⣿⣿⣿⣿⣿⡏⢰⣿⠁⣿⣾⣿⣿⣿⣿⣿⣾⣿⡆⢹⣿⣿⡄⢿⣿⣿⣿⣿⣿⣿\r
+                    ⣿⣿⣿⣿⣿⡇⢸⡿⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠈⣿⣿⡿⠦⢬⣙⠻⣿⣿⣿\r
+                    ⣿⣿⣿⣿⣿⣷⡈⣧⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⡿⠁⠀⠀⠈⢷⡌⢿⣿\r
+                    ⣿⣿⣿⣿⣿⣿⣷⢸⣧⡙⠿⣿⣿⣿⣿⣿⣿⡿⠟⢠⣿⠇⠀⠀⠀⠀⢸⣿⠘⣿\r
+                    ⣿⣿⣿⣿⡿⠟⣋⣄⠻⣄⠀⢨⢙⡛⣩⢭⡤⡀⠀⣸⠏⣰⣆⡀⠀⠀⢸⣿⡆⣿\r
+                    ⣿⣿⠟⣉⣤⣾⣿⣿⣷⣌⠑⠶⣦⣤⣥⣴⣶⡾⠟⢁⣼⣿⣿⣿⣶⣄⡀⣿⣧⠹\r
+                    ⡿⢡⣾⣿⣿⡟⢛⠻⣿⣿⣷⣤⣄⠉⠉⠉⢁⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣌⠻⡆\r
+                    ⣱⣿⣿⣿⡿⢰⣿⣷⣌⡛⠿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄\r
+                    ⣿⣿⣿⡟⣰⣿⣿⣿⣿⣿⣷⣦⣤⣭⣉⣭⣭⣭⣤⣤⣶⣆⠻⠿⠿⣿⣿⣿⣿⣿\r
+                    ⣿⣿⠟⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⢸⣿⣿⣿⣿""";
         }
-        System.exit(0);
+    }
+
+    public static void testa_classificacao(String retornoDaFuncao){
+        String retornoDaFuncaoClassificacao = classificacao(10).getClass().getSimpleName() ;
+
+        if(retornoDaFuncao.getClass().getSimpleName().equals(retornoDaFuncaoClassificacao)){
+            System.out.println("Ok, passou neste teste");
+        }else {
+            System.out.println("Erro !! O retorno dessa função deve ser do tipo String");
+        }
     }
 
 
