@@ -1,5 +1,6 @@
 package com.example.piempreendedorrpg;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
@@ -16,53 +17,76 @@ public class App {
 
     public static void menu(){
         Scanner entrada = new Scanner(System.in);
-
         String opcao = "";
 
-        System.out.println("------ MENU DO JOGO ------");
-        System.out.println("1.: Instruções ");
-        System.out.println("2.: Jogar ");
-        System.out.println("3.: Créditos ");
-        System.out.println("4.: Sair ");
-        System.out.print("Escolha uma opção: ");
-        opcao = entrada.next();
+        if(!Objects.equals(opcao, "4")){
 
+            while(true){
 
+                System.out.println("------ MENU DO JOGO ------");
+                System.out.println("1.: Instruções ");
+                System.out.println("2.: Jogar ");
+                System.out.println("3.: Créditos ");
+                System.out.println("4.: Sair ");
+                System.out.print("Escolha uma opção: ");
+                opcao = entrada.next();
 
+                switch (opcao) {
+                    case "1":
+                        instrucao();
+                        break;
 
-        switch (opcao) {
-            case "1":
-                //System.out.println(" Instruções do JOGO ");
-                instrucao();
-                break;
+                    case "2":
+                        jogar();
+                        break;
 
+                    case "3":
+                        creditos();
+                        break;
 
-            case "2":
-                jogar();
-                break;
+                    case "4":
+                        System.out.println("Encerrando o Jogo");
+                        System.exit(0);
+                        break;
 
-            case "3":
-                creditos();
-                break;
+                    default:
+                        System.out.println("Opção Inválida! ");
+                        break;
 
-            case "4":
-                System.out.println(" Saindo ");
-                break;
+                }
 
-            default:
-                System.out.println("Opção Inválida! ");
-                break;
+            }
 
         }
+
+
+    }
+
+
+    public static void decisaoDeEncerramentoDoPrograma(){
+        Scanner entrada = new Scanner(System.in);
+        String opcao = "";
+
+        while (true){
+            System.out.print("Deseja retornar ao Menu[1] ou Sair[2] ? ");
+            opcao = entrada.next();
+
+            if(Objects.equals(opcao, "1")){
+                menu();
+                break;
+            }else if(Objects.equals(opcao, "2")) {
+                System.out.println("Encerrando o Jogo");
+                System.exit(0);
+                break;
+            }else{
+                System.out.println("Opção inválida");
+            }
+        }
+
     }
 
 
     public static void instrucao(){
-        Scanner entrada = new Scanner(System.in);
-
-        int opcao;
-
-
 
         System.out.print("""
                 ===========================================  Instruções  ===========================================\n
@@ -73,26 +97,16 @@ public class App {
                 - Divirta se
                 ====================================================================================================\n\n""");
 
-        System.out.print("Deseja retornar ao Menu[1] ou Sair[2] ? ");
-        opcao = entrada.nextInt();
-
-        if(opcao == 1){
-            menu();
-        }else {
-            System.out.print("Saindo do programa");
-        }
+        decisaoDeEncerramentoDoPrograma();
 
     }
 
 
     public static void creditos(){
 
-        Scanner entrada = new Scanner(System.in);
-
-        int opcao;
-
-
-        System.out.println("------------ Créditos ------------");
+        System.out.println("=============================================================================");
+        System.out.println("================================== Créditos =================================");
+        System.out.println("=============================================================================\n");
         System.out.println("CENTRO UNIVERSITÁRIO SENAC\n" +
                 "Materia: Projeto Integrador I - Desenvolvimento de Lógica\n" +
                 "Professor: Eduardo Takeo Ueda\n" +
@@ -100,15 +114,7 @@ public class App {
                 "Projeto: Empreendedor RPG\n" +
                 "Devs: Bruno Carlini, Gabriel Oliveira dos Santos, João Victor Baldusco, Lucas Andrade de Sousa.\n");
 
-
-        System.out.print("Deseja retornar ao Menu[1] ou Sair[2] ? ");
-        opcao = entrada.nextInt();
-
-        if(opcao == 1){
-            menu();
-        }else {
-            System.out.print("Saindo do programa");
-        }
+        decisaoDeEncerramentoDoPrograma();
 
     }
 
@@ -133,6 +139,7 @@ public class App {
         }
 
         System.out.println(classificacao(pontos));
+
 
     }
 
@@ -172,26 +179,26 @@ public class App {
 
         String[] opcoesAdmClassica = {
                         "a)Organização em equipes autônomas\n" +
-                        "b)Estrutura hierárquica (certa)\n" +
+                        "b)Estrutura hierárquica\n" +
                         "c)Organização em rede\n" +
                         "d)Estrutura Matrical ",
 
                         "a)Maxima de lucros\n" +
                         "b)Aumento de satisfação dos colaboradores\n" +
-                        "c)eficiencia operacional (resposta certa)\n" +
+                        "c)eficiencia operacional\n" +
                         "d)Desenvolvimento de novos serviços",
 
-                        "a) Planejamento, organização, direção, controle (certa) \n" +
+                        "a) Planejamento, organização, direção, controle\n" +
                         "b) Marketing, finanças, recursos humanos, produção\n" +
                         "c) Criatividade, adaptabilidade, colaboração, inovação\n" +
                         "d) Avaliação, análise, implementação, monitoramento",
 
                         "a) Distribuição equitativa das tarefas entre os funcionários\n" +
-                        "b) Especialização e fragmentação das tarefas para aumentar a eficiência (resposta certa) \n" +
+                        "b) Especialização e fragmentação das tarefas para aumentar a eficiência\n" +
                         "c) Rotação de funções para estimular o desenvolvimento dos funcionários\n" +
                         "d) Participação ativa dos funcionários na definição das tarefas",
 
-                        "a) Unidade de comando e centralização (certa)\n" +
+                        "a) Unidade de comando e centralização\n" +
                         "b) Especialização do trabalho e disciplina\n" +
                         "c) Hierarquia e ordem\n" +
                         "d) Equidade e estabilidade",
@@ -199,27 +206,27 @@ public class App {
                         "a) Teoria das necessidades\n" +
                         "b) Teoria do reforço\n" +
                         "c) Teoria do equilíbrio\n" +
-                        "d) Teoria do incentivo financeiro (certa)",
+                        "d) Teoria do incentivo financeiro",
 
-                        "a) Liderança autocrática (certa)\n" +
+                        "a) Liderança autocrática\n" +
                         "b) Liderança democrática\n" +
                         "c) Liderança situacional\n" +
                         "d) Liderança transformacional",
 
-                        "a) Ênfase na hierarquia, divisão do trabalho e centralização (certa)\n" +
+                        "a) Ênfase na hierarquia, divisão do trabalho e centralização\n" +
                         "b) Ênfase na inovação, flexibilidade e colaboração\n" +
                         "c) Ênfase na participação, autonomia e descentralização\n" +
                         "d) Ênfase na diversidade, sustentabilidade e responsabilidade social",
 
                         "a) Unidade de comando\n" +
                         "b) Centralização\n" +
-                        "c) Disciplina (certa)\n" +
+                        "c) Disciplina\n" +
                         "d) Hierarquia ",
 
                         "a) Unidade de comando\n" +
                         "b) Centralização\n" +
                         "c) Disciplina\n" +
-                        "d) Equidade (certa)"
+                        "d) Equidade"
 
         };
 
@@ -253,30 +260,30 @@ public class App {
         String[] opcoesAdmCientifica = {
                         "a) Maximizar os lucros\n" +
                         "b) Aumentar a satisfação dos funcionários\n" +
-                        "c) Alcançar a eficiência operacional (certa)\n" +
+                        "c) Alcançar a eficiência operacional\n" +
                         "d) Desenvolver novos produtos",
 
-                        "a) Processos de produção (certa)\n" +
+                        "a) Processos de produção\n" +
                         "b) Relações humanas\n" +
                         "c) Marketing e vendas\n" +
                         "d) Gestão financeira ",
 
                         "a) Valorização da intuição e experiência dos funcionários \n" +
                         "b) Uso de incentivos financeiros para motivar os funcionários\n" +
-                        "c) Desenvolvimento de habilidades interpessoais dos funcionários (certa)\n" +
+                        "c) Desenvolvimento de habilidades interpessoais dos funcionários\n" +
                         "d) Aplicação de métodos científicos para melhorar a eficiência",
 
                         "a) Prática de incentivar a competição entre os funcionários\n" +
                         "b) Estratégia de delegar tarefas para os trabalhadores mais experientes\n" +
-                        "c) Comportamento de ociosidade ou trabalho abaixo do potencial (certa)\n" +
+                        "c) Comportamento de ociosidade ou trabalho abaixo do potencial\n" +
                         "d) Método de recompensar os funcionários com promoções rápidas",
 
                         "a) Maior motivação e satisfação dos funcionários\n" +
                         "b) Melhoria da comunicação interna na empresa\n" +
-                        "c) Redução dos custos de produção  (certa)\n" +
+                        "c) Redução dos custos de produção\n" +
                         "d) Maior flexibilidade e adaptabilidade da empresa",
 
-                        "a) Desconsideração das habilidades e conhecimentos dos trabalhadores (certa)\n" +
+                        "a) Desconsideração das habilidades e conhecimentos dos trabalhadores\n" +
                         "b) Ênfase excessiva no trabalho em equipe e colaboração\n" +
                         "c) Ausência de controle e supervisão dos funcionários\n" +
                         "d) Dificuldade em implementar métodos científicos na prática",
@@ -284,26 +291,26 @@ public class App {
                         "a) Teoria das necessidades\n" +
                         "b) Teoria do reforço\n" +
                         "c) Teoria do equilíbrio\n" +
-                        "d) Teoria do incentivo financeiro (certa)",
+                        "d) Teoria do incentivo financeiro",
 
-                        "a) Um sistema de remuneração baseado no mérito e desempenho (certa)\n" +
+                        "a) Um sistema de remuneração baseado no mérito e desempenho\n" +
                         "b) Um bônus dado aos funcionários que atingem as metas de produção\n" +
                         "c) Uma forma de incentivar a colaboração entre os departamentos da empresa\n" +
                         "d) Um sistema de benefícios adicionais para os funcionários mais antigos ",
 
                         "a) Uma tarefa simples que pode ser realizada em apenas um minuto\n" +
                         "b) Uma forma de medir a produtividade dos funcionários\n" +
-                        "c) Uma técnica para identificar desperdícios e melhorar a eficiencia (acerta)",
+                        "c) Uma técnica para identificar desperdícios e melhorar a eficiencia",
 
                         "a) Unidade de comando\n" +
                         "b) Centralização\n" +
                         "c) Disciplina\n" +
-                        "d) Hierarquia (certa)"
+                        "d) Hierarquia"
 
         };
 
         while(true){
-            System.out.print("Qual Administração você escolhe: \na) Administração Classica\nb) Administração Ciêntifica\n>>> ");
+            System.out.print("Qual Administração você escolhe: \na) Administração Clássica\nb) Administração Ciêntifica\n>>> ");
             admEscolhida = entrada.next().toLowerCase();
 
             if(admEscolhida.equals("a")){
@@ -317,7 +324,11 @@ public class App {
             }
         }
 
-
+        System.out.println("");
+        System.out.println("=============================================================================");
+        System.out.println("================================ FIM DE JOGO ================================");
+        System.out.println("=============================================================================\n\n\n");
+        creditos();
     }
 
 
