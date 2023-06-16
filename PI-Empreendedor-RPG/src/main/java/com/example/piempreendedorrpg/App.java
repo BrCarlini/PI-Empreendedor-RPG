@@ -141,10 +141,12 @@ public class App {
         System.out.println("=============================================================================\n");
         System.out.println("CENTRO UNIVERSITÁRIO SENAC\n" +
                 "Materia: Projeto Integrador I - Desenvolvimento de Lógica\n" +
-                "Professor: Eduardo Takeo Ueda\n" +
-                "==========================================\n"+
+                "Professor: Eduardo Takeo Ueda\n"
                 "Projeto: Empreendedor RPG\n" +
                 "Devs: Bruno Carlini, Gabriel Oliveira dos Santos, João Victor Baldusco, Lucas Andrade de Sousa.\n");
+        System.out.println("=============================================================================");
+        System.out.println("=============================================================================");
+        System.out.println("=============================================================================\n");
 
         decisaoDeEncerramentoDoPrograma();
 
